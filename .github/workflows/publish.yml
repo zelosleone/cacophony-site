@@ -1,0 +1,49 @@
+name: Publish
+
+# Every month a new developer token (valid for 180 days) is signed and published with the site,
+# so that copies of Cacophony keep reaching Apple Music. Changes to the pages publish at once.
+on:
+  schedule:
+    - cron: "23 5 1 * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: [token.json]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sign a new token
+        if: github.event_name != 'push'
+        env:
+          MUSICKIT_PRIVATE_KEY: ${{ secrets.MUSICKIT_PRIVATE_KEY }}
+          MUSICKIT_KEY_ID: ${{ secrets.MUSICKIT_KEY_ID }}
+          MUSICKIT_TEAM_ID: ${{ secrets.MUSICKIT_TEAM_ID }}
+        run: |
+          pip install --quiet cryptography==44.0.0
+          python3 tools/mint.py > token.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add token.json
+          git commit -m "Developer token for $(date -u +%Y-%m)"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
