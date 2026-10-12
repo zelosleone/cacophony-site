@@ -1,9 +1,9 @@
 # Cacophony's site
 
 The public pages of [Cacophony](https://zelosleone.itch.io/cacophony), a native Apple Music player
-for Windows, served at https://zelosleone.github.io/cacophony-site/:
+for Windows and Mac, served at https://zelosleone.github.io/cacophony-site/:
 
-- `index.html`: the home page (with `home.jpg`, `album.jpg` and `og.jpg` for link previews).
+- `index.html`: the home page (with `home.jpg`, `album.jpg`, `mac.jpg` and `og.jpg` for link previews).
 - `privacy.html`: what the app sends, and to whom.
 - `sitemap.xml`: the two pages, for search engines.
 - `THIRD-PARTY-NOTICES.txt`: the licenses of what the app is made with.

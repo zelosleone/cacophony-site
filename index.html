@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cacophony: a native Apple Music app for Windows</title>
-  <meta name="description" content="A small, fast Apple Music app for Windows 10 and 11, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling. $5 once, no subscription.">
+  <title>Cacophony: a native Apple Music app for Windows and Mac</title>
+  <meta name="description" content="A small, fast Apple Music app for Windows and Mac, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling. $5 once, no subscription.">
   <link rel="canonical" href="https://zelosleone.github.io/cacophony-site/">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#111112">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cacophony">
-  <meta property="og:title" content="Cacophony: a native Apple Music app for Windows">
-  <meta property="og:description" content="A small, fast Apple Music app for Windows, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling.">
+  <meta property="og:title" content="Cacophony: a native Apple Music app for Windows and Mac">
+  <meta property="og:description" content="A small, fast Apple Music app for Windows and Mac, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling.">
   <meta property="og:url" content="https://zelosleone.github.io/cacophony-site/">
   <meta property="og:image" content="https://zelosleone.github.io/cacophony-site/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -24,11 +24,11 @@
     "@type": "SoftwareApplication",
     "name": "Cacophony",
     "alternateName": "Cacophony for Apple Music",
-    "description": "A native Apple Music app for Windows 10 and 11, with synced lyrics, a 10-band equalizer, a mini player, media keys and Last.fm and ListenBrainz scrobbling.",
+    "description": "A native Apple Music app for Windows and macOS, with synced lyrics, a 10-band equalizer, a mini player and Last.fm and ListenBrainz scrobbling.",
     "url": "https://zelosleone.github.io/cacophony-site/",
     "downloadUrl": "https://zelosleone.itch.io/cacophony",
     "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Windows 10, Windows 11",
+    "operatingSystem": "Windows 10, Windows 11, macOS 14 or later",
     "softwareVersion": "1.0.0",
     "image": "https://zelosleone.github.io/cacophony-site/og.jpg",
     "screenshot": [
@@ -72,8 +72,8 @@
   <main>
     <img class="icon" src="icon.svg" alt="Cacophony's icon" width="80" height="80">
     <h1>Cacophony</h1>
-    <p class="lede">An Apple Music app for Windows that doesn't make you wait.</p>
-    <p>Cacophony plays Apple Music on Windows 10 and 11. The interface is native, written in Rust instead of being a website stuffed into a window, so it opens fast and scrolling stays smooth. Sign in with your Apple Music account and your library, playlists, radio and search are all there.</p>
+    <p class="lede">An Apple Music app for Windows and Mac that doesn't make you wait.</p>
+    <p>Cacophony plays Apple Music on Windows 10 and 11, and on Macs with macOS 14 or newer. The interface is native, written in Rust instead of being a website stuffed into a window, so it opens fast and scrolling stays smooth. Sign in with your Apple Music account and your library, playlists, radio and search are all there.</p>
     <a class="button" href="https://zelosleone.itch.io/cacophony">Get it on itch.io</a>
     <span class="price">$5 once, no subscription</span>
 
@@ -87,7 +87,7 @@
       <li>Synced lyrics that move along with the song, and you can read them full screen. When Apple has none for a track, Cacophony checks LRCLIB.</li>
       <li>A 10-band equalizer with Apple's presets.</li>
       <li>A mini player you can park in a corner while you work.</li>
-      <li>Media keys and the Windows media controls work, with cover art and a seek bar.</li>
+      <li>On Windows, media keys and the system media controls work, with cover art and a seek bar.</li>
       <li>Last.fm and ListenBrainz scrobbling, plus a Discord status. All off until you connect them.</li>
       <li>52 languages, the same ones Apple Music comes in.</li>
     </ul>
@@ -99,16 +99,25 @@
 
     <h2>What you need</h2>
     <ul>
-      <li>Windows 10 or 11, 64-bit.</li>
+      <li>Windows 10 or 11, 64-bit, or macOS 14 Sonoma or newer, on Apple silicon or Intel.</li>
       <li>An Apple Music subscription for full songs. Without one you get 30-second previews.</li>
-      <li>Microsoft Edge WebView2, which does the actual playing. Windows 11 has it already, and on Windows 10 the app tells you if it's missing.</li>
+      <li>On Windows, Microsoft Edge WebView2, which does the actual playing. Windows 11 has it already, and on Windows 10 the app tells you if it's missing.</li>
     </ul>
+
+    <figure>
+      <img src="mac.jpg" alt="Cacophony on a Mac, searching for Daft Punk" width="1280" height="800" loading="lazy">
+      <figcaption>The same app on a Mac.</figcaption>
+    </figure>
 
     <h2>Questions</h2>
     <h3>Do I need an Apple Music subscription?</h3>
     <p>For full songs, yes. Without one, Apple Music only plays 30-second previews. Browsing and search still work.</p>
     <h3>Does it play Lossless or Dolby Atmos?</h3>
     <p>No. Songs play at 256 kbps AAC, the same quality as Apple's web player, and there are no offline downloads.</p>
+    <h3>Do I have to buy it twice for Windows and Mac?</h3>
+    <p>No. One purchase on itch.io gets you both downloads.</p>
+    <h3>Is the Mac version the same?</h3>
+    <p>Yes, apart from the media keys and system media controls, which are Windows-only for now. It's newer, though, and I've tested it less than the Windows one, so tell me if something's off. The Mac download is signed and notarized by Apple, so it opens like any other app.</p>
     <h3>Windows warned me when I opened it. Why?</h3>
     <p>The app isn't code-signed yet, so Windows SmartScreen flags it the first time, like most new apps from small developers. Click "More info", then "Run anyway".</p>
     <h3>Is it made by Apple?</h3>
