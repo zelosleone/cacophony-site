@@ -1,7 +1,8 @@
 name: Publish
 
-# Every month a new developer token (valid for 180 days) is signed and published with the site,
-# so that copies of Cacophony keep reaching Apple Music. Changes to the pages publish at once.
+# Every month a new developer token (valid for 180 days, locked to Cacophony's player page) is
+# signed and published with the site, so that copies of Cacophony keep reaching Apple Music. Changes
+# to the pages publish at once. Signing with the spare key instead: see tools/mint.py.
 on:
   schedule:
     - cron: "23 5 1 * *"

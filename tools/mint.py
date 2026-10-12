@@ -2,7 +2,13 @@
 
 Reads the key from the environment (repository secrets): MUSICKIT_PRIVATE_KEY (the .p8 file's
 text), MUSICKIT_KEY_ID and MUSICKIT_TEAM_ID. Cacophony accepts a token from this site only if it
-carries this key's signature.
+carries the signature of one of its two keys: the main one (9YAJPPTV7M) or the spare
+(JBUSUYQJAU), whose public halves are built into the app. Should the main key ever be revoked,
+put the spare's key ID and .p8 in those two secrets and run the workflow: copies already out keep
+working. The spare's .p8 is kept outside this repository.
+
+The token is locked to Cacophony's player page (Apple's origin claim): Apple refuses a signed-in
+listener's requests made with it from anywhere else.
 """
 
 import base64
@@ -15,6 +21,7 @@ from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import decode_dss_signature
 
 LIFETIME = 180 * 24 * 60 * 60  # Apple allows at most about six months.
+ORIGIN = "https://cacophony.localhost"  # The player page's address in the app, on every platform.
 
 
 def b64(data: bytes) -> str:
@@ -29,7 +36,7 @@ def main() -> None:
     key = serialization.load_pem_private_key(os.environ["MUSICKIT_PRIVATE_KEY"].encode(), password=None)
     now = int(time.time())
     header = {"alg": "ES256", "kid": os.environ["MUSICKIT_KEY_ID"].strip(), "typ": "JWT"}
-    claims = {"iss": os.environ["MUSICKIT_TEAM_ID"].strip(), "iat": now, "exp": now + LIFETIME}
+    claims = {"iss": os.environ["MUSICKIT_TEAM_ID"].strip(), "iat": now, "exp": now + LIFETIME, "origin": [ORIGIN]}
     signing_input = f"{b64(compact(header))}.{b64(compact(claims))}"
     r, s = decode_dss_signature(key.sign(signing_input.encode(), ec.ECDSA(hashes.SHA256())))
     token = f"{signing_input}.{b64(r.to_bytes(32, 'big') + s.to_bytes(32, 'big'))}"
