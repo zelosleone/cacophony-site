@@ -3,34 +3,121 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cacophony</title>
-  <meta name="description" content="A fast, native Apple Music player for Windows.">
+  <title>Cacophony: a native Apple Music app for Windows</title>
+  <meta name="description" content="A small, fast Apple Music app for Windows 10 and 11, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling. $5 once, no subscription.">
+  <link rel="canonical" href="https://zelosleone.github.io/cacophony-site/">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#111112">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cacophony">
+  <meta property="og:title" content="Cacophony: a native Apple Music app for Windows">
+  <meta property="og:description" content="A small, fast Apple Music app for Windows, with synced lyrics, a 10-band equalizer, a mini player and Last.fm scrobbling.">
+  <meta property="og:url" content="https://zelosleone.github.io/cacophony-site/">
+  <meta property="og:image" content="https://zelosleone.github.io/cacophony-site/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cacophony's Home page on Windows, with albums from Apple Music">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cacophony",
+    "alternateName": "Cacophony for Apple Music",
+    "description": "A native Apple Music app for Windows 10 and 11, with synced lyrics, a 10-band equalizer, a mini player, media keys and Last.fm and ListenBrainz scrobbling.",
+    "url": "https://zelosleone.github.io/cacophony-site/",
+    "downloadUrl": "https://zelosleone.itch.io/cacophony",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "softwareVersion": "1.0.0",
+    "image": "https://zelosleone.github.io/cacophony-site/og.jpg",
+    "screenshot": [
+      "https://zelosleone.github.io/cacophony-site/home.jpg",
+      "https://zelosleone.github.io/cacophony-site/album.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "5.00",
+      "priceCurrency": "USD",
+      "url": "https://zelosleone.itch.io/cacophony"
+    },
+    "author": { "@type": "Person", "name": "Denizhan Dakılır" }
+  }
+  </script>
   <style>
     :root { color-scheme: light dark; --ink: #111112; --ink2: #5c5c60; --paper: #f7f7f5; --rule: #e2e2df; }
     @media (prefers-color-scheme: dark) { :root { --ink: #f3f3f1; --ink2: #a3a3a7; --paper: #111112; --rule: #2a2a2d; } }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif; }
-    main { max-width: 680px; margin: 0 auto; padding: 56px 24px 72px; }
-    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
-    h2 { font-size: 19px; margin: 36px 0 8px; }
+    main { max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; }
+    h1 { font-size: 34px; line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.01em; }
+    h2 { font-size: 20px; margin: 44px 0 10px; }
+    h3 { font-size: 16px; margin: 22px 0 4px; }
     p, li { color: var(--ink); }
+    .lede { font-size: 18px; }
     .quiet { color: var(--ink2); }
     a { color: inherit; text-underline-offset: 3px; }
     ul { padding-left: 20px; }
     li { margin: 6px 0; }
-    footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink2); }
-    .button { display: inline-block; margin-top: 20px; padding: 10px 20px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; }
-    .icon { width: 88px; height: 88px; margin-bottom: 20px; }
+    figure { margin: 28px 0; }
+    figure img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--rule); }
+    figcaption { margin-top: 8px; font-size: 14px; color: var(--ink2); }
+    footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink2); }
+    .button { display: inline-block; margin: 18px 12px 0 0; padding: 10px 20px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; }
+    .price { color: var(--ink2); font-size: 15px; }
+    .icon { width: 80px; height: 80px; margin-bottom: 18px; }
   </style>
 </head>
 <body>
   <main>
-    <img class="icon" src="icon.svg" alt="">
+    <img class="icon" src="icon.svg" alt="Cacophony's icon" width="80" height="80">
     <h1>Cacophony</h1>
-    <p>A fast, native Apple Music player for Windows.</p>
-    <p class="quiet">Full songs need an Apple Music subscription. Without one, Apple Music plays 30-second previews.</p>
+    <p class="lede">An Apple Music app for Windows that doesn't make you wait.</p>
+    <p>Cacophony plays Apple Music on Windows 10 and 11. The interface is native, written in Rust instead of being a website stuffed into a window, so it opens fast and scrolling stays smooth. Sign in with your Apple Music account and your library, playlists, radio and search are all there.</p>
     <a class="button" href="https://zelosleone.itch.io/cacophony">Get it on itch.io</a>
+    <span class="price">$5 once, no subscription</span>
+
+    <figure>
+      <img src="home.jpg" alt="Cacophony's Home page on Windows: top albums, picks and the player bar" width="1280" height="680" loading="lazy">
+      <figcaption>Home, signed out. Sign in and it fills up with your own picks and recently played.</figcaption>
+    </figure>
+
+    <h2>What's in it</h2>
+    <ul>
+      <li>Synced lyrics that move along with the song, and you can read them full screen. When Apple has none for a track, Cacophony checks LRCLIB.</li>
+      <li>A 10-band equalizer with Apple's presets.</li>
+      <li>A mini player you can park in a corner while you work.</li>
+      <li>Media keys and the Windows media controls work, with cover art and a seek bar.</li>
+      <li>Last.fm and ListenBrainz scrobbling, plus a Discord status. All off until you connect them.</li>
+      <li>52 languages, the same ones Apple Music comes in.</li>
+    </ul>
+
+    <figure>
+      <img src="album.jpg" alt="An album page in Cacophony, with the track list and the album's colors" width="1280" height="680" loading="lazy">
+      <figcaption>Album pages take their colors from the cover.</figcaption>
+    </figure>
+
+    <h2>What you need</h2>
+    <ul>
+      <li>Windows 10 or 11, 64-bit.</li>
+      <li>An Apple Music subscription for full songs. Without one you get 30-second previews.</li>
+      <li>Microsoft Edge WebView2, which does the actual playing. Windows 11 has it already, and on Windows 10 the app tells you if it's missing.</li>
+    </ul>
+
+    <h2>Questions</h2>
+    <h3>Do I need an Apple Music subscription?</h3>
+    <p>For full songs, yes. Without one, Apple Music only plays 30-second previews. Browsing and search still work.</p>
+    <h3>Does it play Lossless or Dolby Atmos?</h3>
+    <p>No. Songs play at 256 kbps AAC, the same quality as Apple's web player, and there are no offline downloads.</p>
+    <h3>Windows warned me when I opened it. Why?</h3>
+    <p>The app isn't code-signed yet, so Windows SmartScreen flags it the first time, like most new apps from small developers. Click "More info", then "Run anyway".</p>
+    <h3>Is it made by Apple?</h3>
+    <p>No. Cacophony is an independent app. It plays music through Apple's own MusicKit, and you sign in on Apple's own page, so your password only goes to Apple.</p>
+    <h3>What does it collect?</h3>
+    <p>Nothing for me. There's no account, no analytics and no ads. The <a href="privacy.html">privacy page</a> lists everything the app talks to.</p>
+    <h3>Something's broken. Where do I report it?</h3>
+    <p>In the comments on <a href="https://zelosleone.itch.io/cacophony">Cacophony's itch.io page</a>. I read them.</p>
+
     <footer>
       <a href="privacy.html">Privacy</a> &middot; <a href="THIRD-PARTY-NOTICES.txt">Licenses</a><br>
       Cacophony isn't made, endorsed or sponsored by Apple. Apple Music is a trademark of Apple Inc.
